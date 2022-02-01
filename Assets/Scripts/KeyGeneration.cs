@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class KeyGeneration : MonoBehaviour
 {
-    public float xSize = 2;
-    public float zSize = 5;
+    private float _xSize = 2;
+    private float _zSize = 5;
+    private GameObject _currentKey;
+
     public Vector3 currentPosition;
     public GameObject keyPrefab;
-    public GameObject currentKey;
-
-    private void Start()
+    
+    private void Awake()
     {
         AddNewKey();
     }
@@ -16,11 +17,11 @@ public class KeyGeneration : MonoBehaviour
     private void AddNewKey()
     {
         RandomPosition();
-        currentKey = GameObject.Instantiate(keyPrefab, currentPosition, Quaternion.identity) as GameObject;
+        _currentKey = GameObject.Instantiate(keyPrefab, currentPosition, Quaternion.identity) as GameObject;
     }
 
     private void RandomPosition()
     {
-        currentPosition = new Vector3(Random.Range(xSize * -1, xSize), 0.25f, Random.Range(zSize * -1, zSize));
+        currentPosition = new Vector3(Random.Range(_xSize * -1, _xSize), 0, Random.Range(_zSize * -1, _zSize));
     }
 }

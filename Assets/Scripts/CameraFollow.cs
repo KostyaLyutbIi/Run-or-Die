@@ -12,7 +12,6 @@ public class CameraFollow : MonoBehaviour
         _position = target.InverseTransformPoint(transform.position);
     }
 
-
     void Update()
     {
         // Возвращаем камеру в мировые координаты
