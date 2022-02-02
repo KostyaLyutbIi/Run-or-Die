@@ -5,7 +5,7 @@ public class Key : MonoBehaviour
     private Rigidbody _doorRigidbody;
 
     private float _openDoor = -120;
-    private float _speed = 40;
+    private float _speed = 1f;
 
     private void Start()
     {
