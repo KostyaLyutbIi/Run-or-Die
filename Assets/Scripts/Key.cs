@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
-    private Rigidbody _doorRigidbody;
+    public Rigidbody _doorRigidbody;
 
     private float _openDoor = -120;
     private float _speed = 40;
