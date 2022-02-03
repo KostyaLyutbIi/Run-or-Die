@@ -9,7 +9,7 @@ public class Key : MonoBehaviour
 
     private void Start()
     {
-        _doorRigidbody = GameObject.FindGameObjectWithTag("Door").GetComponent<Rigidbody>(); 
+        _doorRigidbody = GameObject.FindGameObjectWithTag("Door").GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)

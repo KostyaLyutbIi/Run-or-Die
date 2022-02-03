@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fire
   - Door
+  - Key
   layers:
   - Default
   - TransparentFX

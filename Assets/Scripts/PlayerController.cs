@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     public float runSpeedMove;
     public float jumpForce;
 
+    public GameController game;
+
     private Vector3 _move;
     private CharacterController _characterController;
     private Animator _animation;
@@ -66,6 +68,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && _characterController.isGrounded)
             _gravityForce = jumpForce;
+    }
+
+    public void PlayerFinish()
+    {
+        game.ThePlayerWon();
+        _characterController.enabled = false;
     }
 }
 
