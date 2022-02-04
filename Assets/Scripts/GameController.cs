@@ -33,10 +33,9 @@ public class GameController : MonoBehaviour
         //player.enabled = false;
     }
 
-
     public void ShowWonScreen()
     {
-        wonScreen.SetActive(true);
+        wonScreen.SetActive(true); 
     }
 
     public void ShowLossScreen()

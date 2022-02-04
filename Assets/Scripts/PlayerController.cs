@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 _move;
     private CharacterController _characterController;
     private Animator _animation;
+
     private float _gravityForce;
+    private bool _inTrigger;
 
     private void Start()
     {
@@ -89,7 +91,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _soundOpenDoor.Play();
+        _inTrigger = true;
+
+        if(other.gameObject.tag == "Key")
+        {
+            other.gameObject.SetActive(false);
+            _soundOpenDoor.Play();
+        }
+
+        if(other.gameObject.tag == "Finish")
+        {
+            PlayerFinish();
+        }
+
+        if (other.gameObject.tag == "Enemy")
+        {
+            PlayerLoss();
+        }
     }
 }
-
