@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
         if (CurrentState != State.Playing) return;
 
         CurrentState = State.Won;
-        //controller.enabled = false; 
+        player.enabled = false; 
     }
 
     public void ThePlayerLoss()
@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
         if (CurrentState != State.Playing) return;
 
         CurrentState = State.Won;
-        //player.enabled = false;
+        player.enabled = false;
     }
 
     public void ShowWonScreen()
