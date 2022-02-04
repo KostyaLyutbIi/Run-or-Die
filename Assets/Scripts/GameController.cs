@@ -1,9 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public PlayerController controller;
+    public PlayerController player;
+
+    public GameObject wonScreen;
+    public GameObject lossScreen;
 
     public enum State
     {
@@ -21,5 +23,24 @@ public class GameController : MonoBehaviour
 
         CurrentState = State.Won;
         //controller.enabled = false; 
+    }
+
+    public void ThePlayerLoss()
+    {
+        if (CurrentState != State.Playing) return;
+
+        CurrentState = State.Won;
+        //player.enabled = false;
+    }
+
+
+    public void ShowWonScreen()
+    {
+        wonScreen.SetActive(true);
+    }
+
+    public void ShowLossScreen()
+    {
+        lossScreen.SetActive(true);
     }
 }

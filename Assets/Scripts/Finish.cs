@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Finish : MonoBehaviour
 {
-    public GameController controller;
+    public PlayerController player;
 
     private void OnTriggerEnter(Collider collider)
     {
-        controller.ThePlayerWon();
+        player.PlayerFinish();
     }
 }

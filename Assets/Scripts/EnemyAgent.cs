@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class EnemyAgent : MonoBehaviour
 {
     public GameObject player;
+    public PlayerController controller;
 
     public float distance;
     public float radius = 8;
@@ -27,6 +28,11 @@ public class EnemyAgent : MonoBehaviour
             _agent.SetDestination(player.transform.position);
         }
             
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        controller.PlayerLoss();
     }
 
 
