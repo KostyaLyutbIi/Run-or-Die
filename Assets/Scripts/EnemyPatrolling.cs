@@ -8,16 +8,14 @@ public class EnemyPatrolling : MonoBehaviour
     public List<Transform> targets;
 
     public float distance;
-    private float _radius = 20f;
+    private float _radius = 30f;
 
     private NavMeshAgent _agent;
-    private Animator _animation;
     private int i;
 
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _animation = GetComponent<Animator>();
     }
 
     private void Target()
@@ -27,11 +25,10 @@ public class EnemyPatrolling : MonoBehaviour
 
     void Update()
     {
-        while (_agent.transform.position == _agent.pathEndPosition)
+        if (_agent.transform.position == _agent.pathEndPosition)
         {
             Target();
             _agent.SetDestination(targets[i].position);
-            _animation.SetTrigger("Walk");
         }
 
         distance = Vector3.Distance(player.transform.position, transform.position);
