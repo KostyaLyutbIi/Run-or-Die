@@ -4,23 +4,30 @@ public class PlayerController : MonoBehaviour
 {
     public float speedMove;
     public float runSpeedMove;
-    public float jumpForce;
+
+    //public float jumpForce;
+
+    public GameController game;
+    private AudioSource _soundOpenDoor;
 
     private Vector3 _move;
     private CharacterController _characterController;
     private Animator _animation;
+
     private float _gravityForce;
+    private bool _inTrigger;
 
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
         _animation = GetComponent<Animator>();
+        _soundOpenDoor = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
         Movement();
-        GamingGravity();
+        //GamingGravity();
     }
 
     // Перемещение персонажа по сцене и анимации
@@ -52,11 +59,11 @@ public class PlayerController : MonoBehaviour
         else
             _animation.SetBool("Run", false);
 
-        _move.y = _gravityForce;
+        //_move.y = _gravityForce;
         _characterController.Move(_move * Time.deltaTime);
     }
 
-    private void GamingGravity()
+    /*private void GamingGravity()
     {
         if (!_characterController.isGrounded)
             _gravityForce -= 25f * Time.deltaTime;
@@ -66,6 +73,40 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && _characterController.isGrounded)
             _gravityForce = jumpForce;
+    }*/
+
+    public void PlayerFinish()
+    {
+        game.ThePlayerWon();
+        game.ShowWonScreen();
+        _characterController.enabled = false;
+    }
+
+    public void PlayerLoss()
+    {
+        game.ThePlayerLoss();
+        game.ShowLossScreen();
+        _characterController.enabled = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        _inTrigger = true;
+
+        if(other.gameObject.tag == "Key")
+        {
+            other.gameObject.SetActive(false);
+            _soundOpenDoor.Play();
+        }
+
+        if(other.gameObject.tag == "Finish")
+        {
+            PlayerFinish();
+        }
+
+        if (other.gameObject.tag == "Enemy")
+        {
+            PlayerLoss();
+        }
     }
 }
-
